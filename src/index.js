@@ -9,7 +9,6 @@ const seekwins = app(
   view,
   document.body,
 );
-console.log(seekwins.start())
 
 /**
  * Hyperapp wires your actions so the view is re-rendered every time the state
