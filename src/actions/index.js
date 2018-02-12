@@ -1,23 +1,17 @@
 import Tone from 'tone'
 
 export default {
-  start: () => ({ sequence, transport }) => {
+  start: () => ({ transport }) => {
+    console.log('start')
     transport.start()
-    const toneSequence = new Tone.Sequence(function(time, note){console.log(time,note)}, sequence, '8n')
-    toneSequence.start()
-    return {
-      transport,
-      toneSequence
-    }
+    return { transport }
   },
-  stop: () => ({ toneSequence, transport }) => {
+  stop: () => ({ transport }) => {
+    console.log('stop')
     transport.stop()
-    toneSequence.dispose()
-    return {
-      toneSequence: null,
-      transport
-    }
+    return { transport }
   },
+  updateNote: () => currentNote => ({currentNote}),
   add: (e, note) => ({ sequence }) => ({ sequence: [...sequence, note] }),
   remove: (e, note) => ({ sequence }) => ({ sequence: sequence.filter(item => item !== note) }),
 }
