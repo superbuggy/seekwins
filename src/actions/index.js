@@ -1,5 +1,4 @@
 import Tone from 'tone'
-import { write } from 'fs';
 
 export default {
   start: () => ({ sequence, transport }) => {
