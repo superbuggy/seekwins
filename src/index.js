@@ -3,12 +3,13 @@ import actions from './actions';
 import state from './state';
 import view from './components/Main';
 
-app(
+const seekwins = app(
   state,
   actions,
   view,
   document.body,
 );
+console.log(seekwins.start())
 
 /**
  * Hyperapp wires your actions so the view is re-rendered every time the state
