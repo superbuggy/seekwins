@@ -1,25 +1,16 @@
 import Tone from 'tone'
+import { write } from 'fs';
 
-const writeNote = () => (time, currentNote) => {
-  console.log(currentNote, time)
-  return { currentNote, time }
-}
 export default {
-  writeNote,
-  start: function() { return ({ sequence, transport }) => {
+  start: () => ({ sequence, transport }) => {
     transport.start()
-    console.log(this)
-    const toneSequence = new Tone.Sequence(
-      this.writeNote(),
-      sequence,
-      '8n'
-    )
+    const toneSequence = new Tone.Sequence(function(time, note){console.log(time,note)}, sequence, '8n')
     toneSequence.start()
     return {
       transport,
       toneSequence
     }
-  }},
+  },
   stop: () => ({ toneSequence, transport }) => {
     transport.stop()
     toneSequence.dispose()
