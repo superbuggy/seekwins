@@ -5,7 +5,6 @@ import view from './components/Main'
 import Tone from 'tone'
 import devtools from 'hyperapp-redux-devtools'
 
-
 let seekwins
 
 if (process.env.NODE_ENV !== 'production') {

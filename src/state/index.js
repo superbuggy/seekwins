@@ -6,4 +6,4 @@ export default {
   sequence,
   currentNote: sequence[0],
   transport: Tone.Transport,
-};
+}

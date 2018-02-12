@@ -1,7 +1,7 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const MinifyPlugin = require('babel-minify-webpack-plugin');
-const webpack = require('webpack');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
+const webpack = require('webpack')
 
 const plugins = [
   new ExtractTextPlugin({
@@ -9,10 +9,10 @@ const plugins = [
     allChunks: true,
   }),
   new webpack.optimize.ModuleConcatenationPlugin(),
-];
+]
 
 module.exports = function webpackStuff(env) {
-  if (env === 'production') plugins.push(new MinifyPlugin());
+  if (env === 'production') plugins.push(new MinifyPlugin())
 
   return {
     entry: [
@@ -44,5 +44,5 @@ module.exports = function webpackStuff(env) {
       }],
     },
     plugins,
-  };
-};
+  }
+}

@@ -1,1 +1,1 @@
-import actions from './../src/actions';
+import actions from './../src/actions'

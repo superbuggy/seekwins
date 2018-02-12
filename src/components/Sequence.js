@@ -1,4 +1,4 @@
-import { h } from 'hyperapp';
+import { h } from 'hyperapp'
 
 export default ({sequence, currentNote}) => {
   return (
@@ -8,5 +8,5 @@ export default ({sequence, currentNote}) => {
       <code>{sequence.join(', ')}</code>
       <hr />
     </div>
-  );
+  )
 }

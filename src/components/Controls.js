@@ -1,4 +1,4 @@
-import { h } from 'hyperapp';
+import { h } from 'hyperapp'
 
 export default ({ running, start, stop }) => {
   return (
