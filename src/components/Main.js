@@ -1,24 +1,14 @@
 import { h } from 'hyperapp';
 import Sequence from './Sequence';
+import Controls from './Controls';
 import Tone from 'tone';
 
-export default ({ sequence, currentNote, toneSequence }, { start, stop }) => {
-  console.log(sequence)
-  return <div class="counter">
-    <Sequence sequence={sequence} currentNot={currentNote}/>
-    <section>
-      <button
-        onclick={start}
-        disabled={toneSequence}
-        >
-        ▶️
-      </button>
-      <button
-        disabled={!toneSequence}
-        onclick={stop}
-      >
-        ⏹
-      </button>
-    </section>
-  </div>;
-}
+export default (
+  { sequence, currentNote, transport },
+  { start, stop }
+) => (
+  <div>
+    <Sequence sequence={sequence} currentNot={currentNote} />
+    <Controls running={transport.state === 'started'} start={start} stop={stop} />
+  </div>
+)
