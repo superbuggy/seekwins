@@ -8,7 +8,7 @@ export default (
   { start, stop }
 ) => (
   <div>
-    <Sequence sequence={sequence} currentNot={currentNote} />
+    <Sequence sequence={sequence} currentNote={currentNote} />
     <Controls running={transport.state === 'started'} start={start} stop={stop} />
   </div>
 )
