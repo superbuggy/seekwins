@@ -13,6 +13,13 @@ export default {
     return { transport }
   },
   updateNote: currentNote => _ => ({currentNote}),
+  updateSequence: (event, index) => ({ sequence }) => ({
+    sequence: [
+      ...sequence.slice(0,index),
+      event.target.value,
+      ...sequence.slice(index + 1)
+    ]
+  }),
   add: (e, note) => ({ sequence }) => ({ sequence: [...sequence, note] }),
   remove: (e, note) => ({ sequence }) => ({ sequence: sequence.filter(item => item !== note) }),
   sequence: _ => ({sequence}) => sequence
