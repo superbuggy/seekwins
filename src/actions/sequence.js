@@ -1,15 +1,22 @@
 export default {
-  updateSequence: ({ oldNote, newNote }) => ({ sequence }) => {
-    const index = sequence.indexOf(oldNote)
-    console.log(oldNote, newNote, index)
-    return {
-      sequence: [
-        ...sequence.slice(0, index),
-        newNote,
-        ...sequence.slice(index + 1)
-      ]
-    }
-  },
-  add: event => ({ sequence }) => ({ sequence: [...sequence, event.target.value] }),
-  remove: event => ({ sequence }) => ({ sequence: sequence.filter(item => item !== event.target.value) })
+  updateSequence: ({ index, newNote }) => ({ sequence }) => ({
+    sequence: [
+      ...sequence.slice(0, index),
+      newNote,
+      ...sequence.slice(index + 1)
+    ]
+  }),
+  add: ({index, note}) => ({ sequence }) => ({
+    sequence: [
+      ...sequence.slice(0, index + 1),
+      note,
+      ...sequence.slice(index + 1)
+    ]
+  }),
+  remove: ({index}) => ({ sequence }) => ({
+    sequence: [
+      ...sequence.slice(0, index),
+      ...sequence.slice(index + 1)
+    ]
+  })
 }
