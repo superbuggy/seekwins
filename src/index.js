@@ -25,14 +25,17 @@ if (process.env.NODE_ENV !== 'production') {
 
 let sequencer
 
-const newSequence = (callback) => new Tone.Sequence(callback, seekwins.sequence(), '8n')
-const update = function (time, note) {
-  console.log(sequencer.progress)
-  seekwins.updateNote(note)
+const newSequence = callback => new Tone.Sequence(callback, seekwins.sequence(), '8n')
+
+const updateTonalSequence = function (time, note) {
+  const index = sequencer.progress * sequencer.length
+  console.log(index, time)
+  seekwins.updateCurrentNote(note)
 }
 
 export const start = () => {
-  sequencer = newSequence(update)
+  console.log('start')
+  sequencer = newSequence(updateTonalSequence)
   sequencer.start()
 }
 
