@@ -1,16 +1,20 @@
 import { h } from 'hyperapp'
 import { Scale } from 'tonal'
 
-export default ({selectedNote},{updateNote}) => {
+export const NoteSelect = ({selectedNote, updateSequence}) => {
   const notesForSelect = Scale.notes('C chromatic')
-  console.log(notesForSelect)
   const options = notesForSelect.map((note, i) => (
-    <option selected={note === selectedNote.replace(/\d/g, '')} value={note}> {note} </option>
+    <option
+      selected={note === selectedNote.replace(/\d/g, '')}
+      value={note}
+    >
+      { note }
+    </option>
   ))
-
+  const handleUpdate = (e) => updateSequence({newNote: e.target.value, oldNote: selectedNote})
   return (
-    <select onchange={e => updateNote()}>
-      {options}
+    <select onchange={handleUpdate}>
+      { options }
     </select>
   )
 }

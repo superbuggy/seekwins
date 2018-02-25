@@ -1,14 +1,18 @@
 import { h } from 'hyperapp'
-import Sequence from './Sequence'
-import Controls from './Controls'
-import Tone from 'tone'
+import { Sequence } from './Sequence'
+import { Controls } from './Controls'
+import { Tone } from 'tone'
 
 export default (
   { sequence, currentNote, transport },
-  { start, stop }
+  { start, stop, updateNote, updateSequence}
 ) => (
   <div>
-    <Sequence sequence={sequence} currentNote={currentNote} />
+    <Sequence
+      sequence={sequence}
+      updateSequence={updateSequence}
+      currentNote={currentNote}
+    />
     <Controls running={transport.state === 'started'} start={start} stop={stop} />
   </div>
 )

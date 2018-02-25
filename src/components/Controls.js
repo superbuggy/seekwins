@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-export default ({ running, start, stop }) => {
+export const Controls = ({ running, start, stop }) => {
   return (
     <section>
       <button

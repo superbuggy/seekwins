@@ -12,15 +12,19 @@ export default {
     transport.stop()
     return { transport }
   },
-  updateNote: currentNote => _ => ({currentNote}),
-  updateSequence: (event, index) => ({ sequence }) => ({
-    sequence: [
-      ...sequence.slice(0,index),
-      event.target.value,
-      ...sequence.slice(index + 1)
-    ]
-  }),
+  updateSequence: ({ oldNote, newNote }) => ({ sequence }) => {
+    const index = sequence.indexOf(oldNote)
+    console.log(oldNote, newNote, index)
+    return {
+      sequence: [
+        ...sequence.slice(0, index),
+        newNote,
+        ...sequence.slice(index + 1)
+      ]
+    }
+  },
   add: (e, note) => ({ sequence }) => ({ sequence: [...sequence, note] }),
   remove: (e, note) => ({ sequence }) => ({ sequence: sequence.filter(item => item !== note) }),
-  sequence: _ => ({sequence}) => sequence
+  sequence: _ => ({sequence}) => sequence,
+  updateNote: newNote => _ => ({currentNote: newNote})
 }
