@@ -1,12 +1,15 @@
 import { h } from 'hyperapp'
 import { NoteSelect } from './NoteSelect'
 
-export const Sequence = ({sequence, currentNote, updateSequence}) => {
-  const noteSelects = sequence.map(note => (
+export const Sequence = ({sequence, currentNote, updateSequence, add, remove}) => {
+  const noteSelects = sequence.map((note, index) => (
     <NoteSelect
       updateSequence={updateSequence}
       selectedNote={note}
-      key={note}
+      key={index}
+      index={index}
+      add={add}
+      remove={remove}
     />))
 
   return (
