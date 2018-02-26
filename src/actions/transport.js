@@ -1,14 +1,21 @@
-import { start, stop } from '../index.js'
+import sequencerActions from './sequencer'
+
+const callback = function (time, note) {
+  console.log(note)
+}
 
 export default {
-  start: () => ({ transport }) => {
-    start()
+  start: () => ({ transport, sequencer }) => {
+    // const sequencer = sequencerActions.initSequencer(callback)({sequence})
+    console.log(sequencer)
+    sequencer.start()
     transport.start()
-    return { transport }
+    return { transport, sequencer }
   },
-  stop: () => ({ transport }) => {
-    stop()
+  stop: () => ({ transport, sequencer }) => {
+    sequencer.stop()
+    sequencer.dispose()
     transport.stop()
-    return { transport }
+    return { transport, sequencer: null }
   }
 }

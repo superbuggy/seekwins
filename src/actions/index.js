@@ -1,13 +1,9 @@
-import Tone from 'tone'
-
 import transportActions from './transport'
-import externals from './externals'
 import sequence from './sequence'
+import sequencer from './sequencer'
 
-const actions = {
+export default {
   ...transportActions,
-  ...externals,
-  ...sequence
+  ...sequence,
+  ...sequencer
 }
-
-export default actions

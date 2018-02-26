@@ -23,7 +23,7 @@ module.exports = function webpackStuff (env) {
       filename: 'bundle.js',
       path: path.resolve(__dirname, './')
     },
-    // devtool: 'eval-source-map',
+    devtool: 'eval-source-map',
     module: {
       rules: [{
         test: /\.js$/,
