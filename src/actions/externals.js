@@ -1,4 +1,3 @@
 export default {
-  sequence: _ => ({sequence}) => sequence,
-  updateCurrentNote: newNote => _ => ({currentNote: newNote})
+  sequence: _ => ({sequence}) => sequence
 }

@@ -1,4 +1,5 @@
 export default {
+  updateCurrentNote: newNote => _ => ({currentNote: newNote}),
   updateSequence: ({ index, newNote }) => ({ sequence }) => ({
     sequence: [
       ...sequence.slice(0, index),

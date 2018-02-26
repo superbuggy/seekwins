@@ -4,39 +4,29 @@ import state from './state'
 import view from './components/Main'
 import Tone from 'tone'
 import devtools from 'hyperapp-redux-devtools'
+import ToneMicroApp from './toneMicroApp'
+
+let config = [
+  state,
+  actions,
+  view,
+  document.body
+]
 
 let seekwins
+let toneMicro
 
 if (process.env.NODE_ENV !== 'production') {
-  seekwins = devtools(app)(
-    state,
-    actions,
-    view,
-    document.body,
-  )
+  seekwins = devtools(app)(...config)
+  toneMicro = new ToneMicroApp(seekwins)
 } else {
-  seekwins = app(
-    state,
-    actions,
-    view,
-    document.body,
-  )
-}
-
-let sequencer
-
-const newSequence = callback => new Tone.Sequence(callback, seekwins.sequence(), '8n')
-
-const updateTonalSequence = function (time, note) {
-  const index = sequencer.progress * sequencer.length
-  console.log(index, time)
-  seekwins.updateCurrentNote(note)
+  seekwins = app(...config)
+  toneMicro = new ToneMicroApp(seekwins)
 }
 
 export const start = () => {
-  console.log('start')
-  sequencer = newSequence(updateTonalSequence)
-  sequencer.start()
+  toneMicro.start()
 }
-
-export const stop = () => sequencer.dispose()
+export const stop = () => {
+  toneMicro.stop()
+}
