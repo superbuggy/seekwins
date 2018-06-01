@@ -17,7 +17,7 @@ module.exports = function webpackStuff (env) {
   return {
     entry: [
       './src/index.js',
-      './styles/app.css'
+      './styles/main.css'
     ],
     output: {
       filename: 'bundle.js',

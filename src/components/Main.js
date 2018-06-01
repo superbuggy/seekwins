@@ -5,19 +5,22 @@ import { Tone } from 'tone'
 
 export default (
   { sequence, currentNote, transport },
-  { start, stop, updateNote, updateSequence, add, remove }
+  { start, stop, updateNote, updateSequenceNote, add, remove }
 ) => {
-  console.log(transport.start)
   return (
     <div>
       <Sequence
         sequence={sequence}
-        updateSequence={updateSequence}
+        updateSequenceNote={updateSequenceNote}
         currentNote={currentNote}
         add={add}
         remove={remove}
       />
-      <Controls running={transport.state === 'started'} start={start} stop={stop} />
+      <Controls
+        running={transport.state === 'started'}
+        start={start}
+        stop={stop}
+      />
     </div>
   )
 }

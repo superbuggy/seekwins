@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Berkshire+Swash");
+
+body {
+  font-family: Berkshire Swash, sans-serif;
+  letter-spacing: 1px;
+  word-spacing: 1vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-size: calc(10px + 2vmin);
+}
+
+.current-sequence {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid slategrey;
+}
+
+.sequence {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.note-select {
+
+}
+
+div > select {
+  /* margin: 33% auto; */
+  border: 1px solid black;
+}
+
+button {
+  padding: 0 1em;
+  border: none;
+  font-size: 1em;
+  height: 3em;
+}

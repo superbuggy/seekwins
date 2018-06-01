@@ -1,23 +1,34 @@
+import { add, remove } from '../index.js'
+
 export default {
   updateCurrentNote: newNote => _ => ({currentNote: newNote}),
-  updateSequence: ({ index, newNote }) => ({ sequence }) => ({
-    sequence: [
-      ...sequence.slice(0, index),
-      newNote,
-      ...sequence.slice(index + 1)
-    ]
-  }),
-  add: ({index, note}) => ({ sequence }) => ({
-    sequence: [
-      ...sequence.slice(0, index + 1),
-      note,
-      ...sequence.slice(index + 1)
-    ]
-  }),
-  remove: ({index}) => ({ sequence }) => ({
-    sequence: [
-      ...sequence.slice(0, index),
-      ...sequence.slice(index + 1)
-    ]
-  })
+  updateSequenceNote: ({ index, newNote }) => ({ sequence }) => {
+    add(index, newNote)
+    return {
+      sequence: [
+        ...sequence.slice(0, index),
+        newNote,
+        ...sequence.slice(index + 1)
+      ]
+    }
+  },
+  add: ({index, note}) => ({ sequence }) => {
+    add(index, note)
+    return {
+      sequence: [
+        ...sequence.slice(0, index + 1),
+        note,
+        ...sequence.slice(index + 1)
+      ]
+    }
+  },
+  remove: ({index}) => ({ sequence }) => {
+    remove(index)
+    return {
+      sequence: [
+        ...sequence.slice(0, index),
+        ...sequence.slice(index + 1)
+      ]
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 import { Scale } from 'tonal'
 
-export const NoteSelect = ({selectedNote, updateSequence, add, remove, index}) => {
+export const NoteSelect = ({selectedNote, updateSequenceNote, add, remove, index}) => {
   const notesForSelect = Scale.notes('C chromatic')
   const options = notesForSelect.map((note, i) => (
     <option
@@ -11,16 +11,18 @@ export const NoteSelect = ({selectedNote, updateSequence, add, remove, index}) =
       { note }
     </option>
   ))
-  const handleUpdate = (e) => updateSequence({newNote: e.target.value, index})
+  const handleUpdate = e => updateSequenceNote({newNote: e.target.value, index})
   const handleRemove = _ => remove({index, note: selectedNote})
   const handleAdd = _ => add({index, note: selectedNote})
   return (
-    <div>
+    <div class={'note-select'}>
       <select onchange={handleUpdate}>
         { options }
       </select>
-      <button onclick={handleRemove}>➖</button>
-      <button onclick={handleAdd}>➕</button>
+      <section>
+        <button onclick={handleRemove}>➖</button>
+        <button onclick={handleAdd}>➕</button>
+      </section>
     </div>
   )
 }

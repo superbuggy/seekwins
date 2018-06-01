@@ -1,6 +1,7 @@
 import { start, stop } from '../index.js'
 
 export default {
+  sequence: _ => ({sequence}) => sequence,
   start: () => ({ transport }) => {
     start()
     transport.start()
@@ -11,4 +12,5 @@ export default {
     transport.stop()
     return { transport }
   }
+
 }

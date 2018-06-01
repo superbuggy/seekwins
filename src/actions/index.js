@@ -1,12 +1,10 @@
 import Tone from 'tone'
 
-import transportActions from './transport'
-import externals from './externals'
+import transport from './transport'
 import sequence from './sequence'
 
 const actions = {
-  ...transportActions,
-  ...externals,
+  ...transport,
   ...sequence
 }
 

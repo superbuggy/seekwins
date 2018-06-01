@@ -1,10 +1,11 @@
 import { h } from 'hyperapp'
 import { NoteSelect } from './NoteSelect'
 
-export const Sequence = ({sequence, currentNote, updateSequence, add, remove}) => {
+export const Sequence = ({sequence, presentNote, updateSequenceNote, add, remove}) => {
+  console.log(sequence)
   const noteSelects = sequence.map((note, index) => (
     <NoteSelect
-      updateSequence={updateSequence}
+      updateSequenceNote={updateSequenceNote}
       selectedNote={note}
       key={index}
       index={index}
@@ -13,15 +14,13 @@ export const Sequence = ({sequence, currentNote, updateSequence, add, remove}) =
     />))
 
   return (
-    <div>
-      <h1>Notes</h1>
-      <h3>🔊
-        <code>
-          { currentNote }
-        </code>
-      </h3>
-      {noteSelects}
-      <hr />
+    <div class={'sequence'}>
+      <h1 class={'currentNote'}>
+        { `🔊${presentNote}🎶` }
+      </h1>
+      <section class={'current-sequence'} sequence={sequence} onupdate={(..._) => console.log(_)}>
+        {noteSelects}
+      </section>
     </div>
   )
 }

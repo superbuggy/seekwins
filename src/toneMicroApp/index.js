@@ -2,7 +2,6 @@ import Tone from 'tone'
 
 export default class ToneMircoApp {
   constructor (seekwins) {
-    console.log(seekwins)
     this.seekwins = seekwins
     this.sequencer = this.newSequence(this.onBeat())
   }
@@ -14,17 +13,23 @@ export default class ToneMircoApp {
   onBeat () {
     const updater = note => this.seekwins.updateCurrentNote(note)
     return function (time, note) {
-      console.log(time, note, this)
       updater(note)
     }
   }
 
+  add (index, note) {
+    this.sequencer.add(index, note)
+  }
+
+  remove (index) {
+    this.sequencer.remove(index)
+  }
+
   start () {
-    console.log('start')
-    this.sequencer.start()
+    this.sequencer.start(0)
   }
 
   stop () {
-    this.sequencer.stop()
+    this.sequencer.stop(0)
   }
 }

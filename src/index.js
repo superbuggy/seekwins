@@ -14,19 +14,27 @@ let config = [
 ]
 
 let seekwins
-let toneMicro
 
 if (process.env.NODE_ENV !== 'production') {
   seekwins = devtools(app)(...config)
-  toneMicro = new ToneMicroApp(seekwins)
 } else {
   seekwins = app(...config)
-  toneMicro = new ToneMicroApp(seekwins)
 }
+
+const toneMicro = new ToneMicroApp(seekwins)
+
+console.log(toneMicro)
 
 export const start = () => {
   toneMicro.start()
 }
 export const stop = () => {
   toneMicro.stop()
+}
+
+export const add = (index, note) => {
+  toneMicro.add(index, note)
+}
+export const remove = (index) => {
+  toneMicro.remove(index)
 }
